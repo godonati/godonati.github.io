@@ -218,12 +218,12 @@
             </section>
 
             <!--===== CONTACT =====-->
-            <section id="contact-form" class="contact section">
+            <section id="contact" class="contact section">
                 <h2 class="section-title">Contact</h2>
 
                 <div class="contact__container bd-grid">
-                    <form id="contact" action="https://formspree.io/f/xjkbzvod" class="contact__form" method="POST">
-                        <input type="text" placeholder="Name" id="first-name" name="first-name" class="contact__input" required>
+                    <form id="contact-form" action="https://formspree.io/f/xjkbzvod" class="contact__form" method="POST">
+                        <input type="text" placeholder="Name" id="first-name" name="name" class="contact__input" required>
                         <input type="mail" placeholder="Email" id="email" name="email" class="contact__input" required>
                         <input type="text" placeholder="Subject" id="subject" name="subject" class="contact__input" required>
                         <textarea id="message" name="message" cols="0" rows="10" class="contact__input" required></textarea>
@@ -237,7 +237,7 @@
             </section>
 
             <script>
-                document.getElementById('contact').addEventListener('submit', function(event) {
+                document.getElementById('contact-form').addEventListener('submit', function(event) {
                     var email = document.getElementById('email').value;
                     var firstName = document.getElementById('first-name').value;
                     var lastName = document.getElementById('last-name').value;
