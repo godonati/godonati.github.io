@@ -51,7 +51,14 @@ const sr = ScrollReveal({
     reset: true
 });
 
+/* MAIN */
 sr.reveal('.home__data, .about__img, .about__social, .skills__subtitle, .skills__text, .contact__social', {}); 
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 50}); 
 sr.reveal('.home__social-icon, .about__social-icon, .contact__social-icon', { interval: 50});
 sr.reveal('.skills__data, .work__img, .contact__input, .contact-schedule__button, .contact-message__button',{interval: 50});
+
+/* PRODUCT */
+sr.reveal('.product__data, .persona__img, .persona__social, .roadmap__subtitle, .roadmap__text, .contact__social', {}); 
+sr.reveal('.product__img, .persona__subtitle, .persona__text, .roadmap__img',{delay: 50}); 
+sr.reveal('.product__social-icon, .persona__social-icon, .contact__social-icon', { interval: 50});
+sr.reveal('.roadmap__data, .requirements__img, .contact__input, .contact-schedule__button, .contact-message__button',{interval: 50});
