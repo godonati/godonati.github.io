@@ -52,22 +52,34 @@
             </section>
 
             <!--===== PERSONA =====-->
-            <section class="about section " id="persona">
+            <section class="about section" id="persona">
                 <h2 class="section-title">Persona</h2>
-
+            
                 <div class="about__container bd-grid">
-                    <div class="about__img">
-                        <img src="assets/img/about.jpg" alt="">
+                    <!-- Tab Buttons -->
+                    <div class="about__tabs">
+                        <button class="tab-button" onclick="showTab('personaTab')">Persona Name</button>
+                        <button class="tab-button" onclick="showTab('goalsTab')">Goals</button>
                     </div>
-                    
-                    <div>
-                        <h2 class="about__subtitle">The Persona</h2>
-                        <p class="about__text">
-                            Persona      
-                        </p> 
-                    </div>                                   
+            
+                    <!-- Tab Content -->
+                    <div class="about__content">
+                        <div id="personaTab" class="tab-content">
+                            <h2 class="about__subtitle">Emma Sanchez</h2>
+                            <p class="about__text">
+                                Head of Marketing at a Mid-Sized eCommerce Company.
+                            </p>
+                        </div>
+            
+                        <div id="goalsTab" class="tab-content" style="display:none;">
+                            <h2 class="about__subtitle">Goals</h2>
+                            <p class="about__text">
+                                Our goal is to make the best product.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </section>
+            </section>         
 
             <!--===== PRODUCT REQUIREMENTS =====-->
             <section class="work section" id="requirements">
