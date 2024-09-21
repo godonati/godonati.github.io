@@ -42,23 +42,6 @@ const scrollActive = () =>{
 }
 window.addEventListener('scroll', scrollActive)
 
-/* ===== PRODUCT TABS ===== */
-function showTab(tabId) {
-    // Hide all tab contents
-    var tabs = document.querySelectorAll('.tab-content');
-    tabs.forEach(function(tab) {
-        tab.style.display = 'none';
-    });
-
-    // Show the selected tab content
-    document.getElementById(tabId).style.display = 'block';
-}
-
-// By default, show the Persona tab if it exists
-if(document.getElementById('personaTab')) {
-    document.getElementById('personaTab').style.display = 'block';
-}
-
 /*===== SCROLL REVEAL ANIMATION =====*/
 const sr = ScrollReveal({
     origin: 'top',

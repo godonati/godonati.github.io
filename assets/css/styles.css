@@ -154,6 +154,10 @@ img {
   top: 2rem;
   background-color: var(--first-color);
 }
+.nav__mini_logo {
+  margin-left: 10px;
+  color: var(--second-color);
+}
 .nav__logo {
   margin-left: 20px;
   color: var(--second-color);
@@ -181,6 +185,18 @@ img {
 }
 
 /*BUTTONS*/
+.mini_menu_button {
+  display: inline-block;
+  background-color: var(--first-color);
+  color: #fff;
+  padding: 0.2rem 1rem;
+  font-weight: var(--font-semi);
+  border-radius: 1.5rem;
+  transition: 0.3s;
+}
+.mini_menu_button:hover {
+  box-shadow: 0px 10px 36px rgba(0, 0, 0, 0.15);
+}
 .button {
   display: inline-block;
   background-color: var(--first-color);
