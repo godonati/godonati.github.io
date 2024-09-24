@@ -62,3 +62,104 @@ sr.reveal('.product__data, .persona__img, .persona__social, .roadmap__subtitle, 
 sr.reveal('.product__img, .persona__subtitle, .persona__text, .roadmap__img',{delay: 50}); 
 sr.reveal('.product__social-icon, .persona__social-icon, .contact__social-icon', { interval: 50});
 sr.reveal('.roadmap__data, .requirements__img, .contact__input, .contact-schedule__button, .contact-message__button',{interval: 50});
+
+//persona buttons script//
+const demographic = document.querySelector('.demographic')
+const allButtons = document.querySelectorAll(".persona_button")
+console.log(allButtons)
+allButtons[0].addEventListener('click',()=>{
+    allButtons[0].style.backgroundColor='#83a4ff'
+    demographic.classList.remove('hide')
+}
+)
+
+
+allButtons[0].click()
+
+allButtons[0].addEventListener('click',()=>{
+    allButtons[0].style.backgroundColor='#83a4ff'
+    allButtons[0].style.color='#3E6FF4'
+    demographic.classList.remove('hide')
+    for(var i=0;i<7;i++){
+        if(i!=0)
+        allButtons[i].style.backgroundColor='#3E6FF4';
+        allButtons[i].style.color='white'
+        
+    }
+
+})
+allButtons[1].addEventListener('click',()=>{
+    allButtons[1].style.backgroundColor='#83a4ff'
+    demographic.classList.add('hide')
+    
+    for(var i=0;i<7;i++){
+        if(i!=1)
+        allButtons[i].style.backgroundColor='#3E6FF4'
+        allButtons[i].style.color='white'
+    }
+
+})
+allButtons[2].addEventListener('click',()=>{
+    allButtons[2].style.backgroundColor='#83a4ff'
+    allButtons[2].style.color='#3E6FF4'
+    demographic.classList.add('hide')
+    for(var i=0;i<7;i++){
+        if(i!=2)
+        allButtons[i].style.backgroundColor='#3E6FF4'
+        allButtons[i].style.color='white'
+    }
+
+})
+allButtons[3].addEventListener('click',()=>{
+    allButtons[3].style.backgroundColor='#83a4ff'
+    demographic.classList.toggle('hide')
+    for(var i=0;i<7;i++){
+        if(i!=3)
+        allButtons[i].style.backgroundColor='#83a4ff'
+        allButtons[i].style.color='white'
+    }
+
+})
+allButtons[3].addEventListener('click',()=>{
+    allButtons[3].style.backgroundColor='#83a4ff'
+    allButtons[3].style.color='#3E6FF4'
+    demographic.classList.add('hide')
+    for(var i=0;i<7;i++){
+        if(i!=3)
+        allButtons[i].style.backgroundColor='#3E6FF4'
+        allButtons[i].style.color='white'
+    }
+
+})
+allButtons[4].addEventListener('click',()=>{
+    allButtons[4].style.backgroundColor='#83a4ff'
+    demographic.classList.add('hide')
+   
+    for(var i=0;i<7;i++){
+        if(i!=4)
+        allButtons[i].style.backgroundColor='#3E6FF4'
+        allButtons[i].style.color='white'
+    }
+
+})
+allButtons[5].addEventListener('click',()=>{
+    allButtons[5].style.backgroundColor='#83a4ff'
+    demographic.classList.add('hide')
+    for(var i=0;i<7;i++){
+        if(i!=5)
+        allButtons[i].style.backgroundColor='#3E6FF4'
+        allButtons[i].style.color='white'
+    }
+
+})
+allButtons[6].addEventListener('click',()=>{
+    allButtons[6].style.backgroundColor='#83a4ff'
+    demographic.classList.add('hide')
+    for(var i=0;i<7;i++){
+        if(i!=6)
+        allButtons[i].style.backgroundColor='#3E6FF4'
+        allButtons[i].style.color='white'
+    }
+
+})
+const persona = document.getElementsByClassName('persona_section')[0]
