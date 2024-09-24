@@ -122,7 +122,148 @@ img {
   align-items: center;
   font-weight: var(--font-semi);
 }
-@media screen and (max-width: 767px) {
+.profile_div{display: none;}
+.list{
+  gap: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  left: 50px;
+  justify-content:center;
+  width: fit-content;
+  margin: auto auto 20px auto;
+}
+.list div,button{
+  text-align: center;
+  align-content: center;
+  background-color: #3E6FF4;
+  width: 100%;
+  color: #fff;
+  border-radius: 16px;
+  height: 50px;
+  width: 140px;
+}
+.list button{
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 200ms;
+}
+.products_title{
+  font-size:54px;
+  margin-right: 0;
+  width: 40vw;
+}
+#logo{
+  background-image: url('../img/logo_via.png');
+ background-size: cover;
+  width: 280px;
+  height: 280px;
+}
+#via_nav{
+  background-color: #FFFFFF;
+box-shadow: rgba(146, 161, 176, 0.15) 0 1px 4px;
+box-sizing: border-box;
+color: #0D1730;
+font-family: "Poppins", sans-serif;
+left: 0;
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 100;
+}
+.via_production_div{
+  justify-content: center;
+  display: flex;
+  box-sizing: border-box;
+  padding-inline: 170px;
+  margin-top: 132px;
+  margin-bottom: 100px;
+
+}
+.products_title via{
+  color: #3E6FF4;
+}
+.list button:hover{
+  transition: 200ms;
+  background-color: #83a4ff;
+
+}
+
+.persona_section_title{
+  text-align: center;
+  margin-top: 12px;
+  font-size: 22px;
+}
+.persona_section_info{
+  color: #3E6FF4;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.hide{
+  opacity: 0;
+}
+.persona_section{
+  gap: 16px;
+  height: 600px;
+  text-align: center;
+  width: 92vw;
+  margin: 20px auto;
+  background-color: #fcfcfc;
+}
+.persona_section p{
+  max-width: 280px;
+  margin: auto auto 16px auto;
+}
+@media(max-width: 640px) {
+  #mobile_profile{
+    width: 300px;
+    height: 300px;
+    background-image: url("../img/profile.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-color: rgb(35, 105, 209);
+    border: none!important;
+    display: block!important;
+  }
+
+ 
+  .profile_div{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 36px;
+    max-height: 420px;
+    justify-content: left;
+  }
+  #mobile_social{
+    display: flex;
+    flex-wrap: wrap;
+    width: 40px;
+    margin: 0;
+    
+   
+  }
+  .home__social-icon{
+    width: 40px;
+    height: 100px;
+    display: block;
+  }
+  .home__social-icon i{
+    display:block;
+    height: 46px;
+    width: 20px;
+  }
+  #desktop_social{
+    display: none;
+  }
+
+  #desktop_profile{
+    display: none;
+  }
+
   .nav__menu {
     position: fixed;
     top: var(--header-height);
@@ -133,11 +274,38 @@ img {
     background-color: var(--second-color);
     transition: 0.5s;
   }
+
 }
 .nav__item {
   margin-bottom: var(--mb-4);
 }
-
+#img1{
+  transition: 1s;
+  background-image:url("../img/logo_via.png") ;
+  background-size:200px;
+  min-height: 213px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#img1:hover{
+  background-size:250px;
+}
+#img1::after{
+  opacity: 0;
+  color:white;
+  content: "Exemplo de texto do card Exemplo de texto do card Exemplo de texto do card Exemplo de texto do cardExemplo de texto do cardExemplo de texto do card ";
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: 200ms;
+  text-align: center;
+  align-content: center;
+  background-color: #0000004f;
+}
+#img1:hover:after{
+  transition: 200ms;
+ opacity: 100;
+}
 .nav__link {
   position: relative;
   color: #fff;
@@ -221,6 +389,7 @@ img {
 }
 .home__title {
   margin-left: 20px;
+  margin-top: 0;
   font-size: var(--big-font-size);
   margin-bottom: var(--mb-2);
 }
@@ -230,6 +399,7 @@ img {
 .home__social {
   display: flex;
   flex-direction: column;
+
 }
 .home__social-icon {
   width: max-content;
@@ -436,7 +606,7 @@ img {
 }
 
 /* ===== MEDIA QUERIES=====*/
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 620px) {
   .home {
     row-gap: 2rem;
   }
