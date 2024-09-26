@@ -20,7 +20,7 @@
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item"><a href="#home" class="nav__link active-link">Via</a></li>
-                    <li class="nav__item"><a href="#about" class="nav__link">Persona</a></li>
+                    <li class="nav__item"><a href="#about" class="nav__link" id="persona">Persona</a></li>
                     <li class="nav__item"><a href="#work" class="nav__link">OKR</a></li>
                     <li class="nav__item"><a href="#case" class="nav__link">KPI</a></li>
                     <li class="nav__item"><a href="#skills" class="nav__link">PRD</a></li>
@@ -43,6 +43,7 @@
 
     <h2 class="section-title">Persona</h2>
 <div class="list persona">
+    <button class="persona_button">Name</button>
     <button class="persona_button">Demographics</button>
     <button class="persona_button">Background</button>
     <button class="persona_button">Pain Points</button>
@@ -54,6 +55,13 @@
     
 </div>
 <div class="persona_section">
+
+    <div id="name">
+        <h3 class="persona_section_info">Name</h3>
+        <p>James Donner</p>
+    </div>
+    
+
    <div class="demographic hide">
     <h3 class="persona_section_title">Demographics</h3>
     <span class="persona_section_info">Industry</span><br>
@@ -75,9 +83,49 @@
     <p>Urban or suburban with access to tech hubs and global markets</p>
    </div>
 
+   <div id="background">
+    <h3 class="persona_section_title">Background</h3>
+    <p id="backGroundP">Emma works at a mid-sized eCommerce company that focuses primarily on beauty products and women's fashion. Her responsibilities include overseeing all digital marketing campaigns, ensuring that ad content drives traffic, conversions, and customer engagement. With her role being highly performance-driven, Emma is constantly looking for ways to optimize ad content, test various campaigns, and quickly adapt to changing market trends.</p>
+   </div>
+
+
    
 
 </div>
-<script src="assets/js/main.js"></script>
+<h2 class="section-title">Roadmap</h2>
+
+<div class="roadmap_container">
+    <div id="side_roadmap">
+        <div class="q">Q1</div>
+        <div class="q">Q2</div>
+        <div class="q">Q3</div>
+    </div>
+
+    <div id="roadMapScroll">
+        <span class="roadMapTitle">Quarter 1</span>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, suscipit. Cum, quasi iusto expedita et ullam reprehenderit nostrum, dolorum corrupti iste maiores repudiandae nihil in tempora suscipit voluptatem qui ipsa.</p>
+
+        <span class="roadMapTitle">Quarter 2</span>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, suscipit. Cum, quasi iusto expedita et ullam reprehenderit nostrum, dolorum corrupti iste maiores repudiandae nihil in tempora suscipit voluptatem qui ipsa.</p>
+
+        <span class="roadMapTitle">Quarter 3</span>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, suscipit. Cum, quasi iusto expedita et ullam reprehenderit nostrum, dolorum corrupti iste maiores repudiandae nihil in tempora suscipit voluptatem qui ipsa.</p>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="./assets/js/via.js"></script>
+
 </body>
 </html>
