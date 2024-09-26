@@ -69,7 +69,24 @@ img {
   height: auto;
   display: block;
 }
-
+.hideText{
+  height: 0!important;
+  margin: 0;
+  padding: 0;
+  transition: 400ms;
+  opacity: 0!important;
+ 
+}
+#aboutTextPlaceHolder{
+  max-height: 300px;
+}
+#aboutTextPlaceHolder p{
+  overflow-y: scroll;
+  max-height: 270px;
+}
+#questions span{
+  font-weight: bold;
+}
 /*===== CLASS CSS ===== */
 .section-title {
   position: relative;
@@ -181,6 +198,7 @@ z-index: 100;
   margin-bottom: 100px;
 
 }
+#howIworkLi{margin-top: 36px;}
 .products_title via{
   color: #3E6FF4;
 }
@@ -202,18 +220,23 @@ z-index: 100;
   letter-spacing: 1px;
 }
 .hide{
+  height: 0;
+  transform: 400ms;
   opacity: 0;
 }
 .persona_section{
   gap: 16px;
-  height: 600px;
+  height: 640px;
   text-align: center;
   width: 92vw;
   margin: 20px auto;
   background-color: #fcfcfc;
 }
+#backGroundP{
+  width:500px!important;
+}
 .persona_section p{
-  max-width: 280px;
+ 
   margin: auto auto 16px auto;
 }
 @media(max-width: 640px) {
@@ -290,21 +313,26 @@ z-index: 100;
 #img1:hover{
   background-size:250px;
 }
-#img1::after{
+
+.viaText{opacity: 0;}
+
+
+#img1:hover .viaText{
+  text-align: center;
   opacity: 0;
   color:white;
-  content: "Exemplo de texto do card Exemplo de texto do card Exemplo de texto do card Exemplo de texto do cardExemplo de texto do cardExemplo de texto do card ";
+  white-space: pre-wrap;
   display: block;
-  width: 100%;
+  content: '';
   height: 100%;
   transition: 200ms;
   text-align: center;
+  box-sizing: border-box;
+  padding-inline: 10px;
   align-content: center;
   background-color: #0000004f;
-}
-#img1:hover:after{
   transition: 200ms;
- opacity: 100;
+  opacity: 100;
 }
 .nav__link {
   position: relative;
@@ -438,12 +466,23 @@ z-index: 100;
 
 /* ===== ABOUT =====*/
 .about__container {
+  transition: 400ms;
   row-gap: 2rem;
   text-align: center;
 }
-.about__subtitle {
+.about__subtitle 
+{
+  transition: 400ms;
   margin-bottom: var(--mb-2);
+  animation-delay: 0;
+  position: absolute;
+ 
 }
+.about button:first-child{
+  background-color: #7fa1ff;
+}
+
+
 .about__img {
   justify-self: center;
 }
@@ -462,7 +501,11 @@ z-index: 100;
 .about__social-icon:hover {
   color: var(--first-color);
 }
-
+.about__text{
+  transition: 400ms;
+  margin-top: 20px!important;
+  margin-bottom: 20px;
+}
 /* HOME BUTTONS */
 .about-message__button {
   margin: auto;
@@ -524,11 +567,11 @@ z-index: 100;
   border-radius: 0.5rem;
   z-index: var(--z-back);
 }
-.skills__html {
-  width: 95%;
+.skills__agile {
+  width: 90%;
 }
-.skills__css {
-  width: 85%;
+.skills__lifeCicle {
+  width: 80%;
 }
 .skills__js {
   width: 65%;
@@ -722,4 +765,79 @@ z-index: 100;
   .home__img {
     width: 450px;
   }
+}
+#side_roadmap{
+  width: 240px;
+  justify-content: center;
+  margin: auto;
+  gap: 16px;
+  box-sizing: border-box;
+  padding-block:20px ;
+  height: 100%;
+  border: 1px solid #0000004f;
+  
+}
+.q{
+  width: 46px;
+  border-radius: 10%;
+  height: 46px;
+  background-color: #3E6FF4;
+  z-index: 1;
+  margin: auto;
+  position: relative;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 166px;
+}
+.q::after{
+  content: '';
+  height: 215px;
+  width: 4px;
+  margin: auto;
+  top: 0;
+  right: 47%;
+  position: absolute;
+  z-index: -13;
+  background-color: #3E6FF4;
+  display: block;
+}
+.q:last-child::after{
+  height: 0px;
+  content: '';
+}
+.roadmap_container
+{
+  height: 560px;
+  display: flex;
+  box-sizing: border-box;
+  padding-inline: 80px;
+  width: 90vw;
+  margin: auto auto 100px auto;
+  justify-content: center;
+}
+#roadMapScroll{
+  box-sizing: border-box;
+  padding: 24px;
+  width: 100%;
+  position: relative;
+  overflow-y: scroll;
+  height: 100%;
+  background-color: #fdfdfd;
+}
+.roadMapTitle{
+  color: #3E6FF4;
+  text-align: center;
+  font-size: 28px;
+  margin: auto;
+  display: block;
+  font-weight: bold;
+}
+#roadMapScroll p{
+  text-align: center;
+  margin: auto;
+  width: 80%;
+  margin-bottom: 100px;
 }
