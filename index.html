@@ -39,7 +39,28 @@
         <main class="l-main">
             <!--===== HOME =====-->
             <section class="home bd-grid" id="home">
+                <div class="profile_div">
+                    <g id="mobile_profile" mask="url(#mask0)">
+                        <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+
+                        <image class="home__blob-img" x="50" y="60" href="assets/img/profile.png"/>
+                    </g>
+
+                    <div id="mobile_social">
+                        <a href="https://www.github.com/godonati" target="_blank" class="home__social-icon"><i class="bx bxl-github" ></i></a>
+                        <a href="https://www.linkedin.com/in/godonati/" target="_blank" class="home__social-icon"><i class="bx bxl-linkedin" ></i></a>
+                        <a href="https://www.youtube.com/@godonati" target="_blank" class="home__social-icon"><i class="bx bxl-youtube" ></i></a>
+                        <a href="https://open.spotify.com/show/5l1RJUNvAkFo0VsHUlTlz5" target="_blank" class="home__social-icon"><i class="bx bxl-spotify" ></i></a>
+                        <a href="https://medium.com/@gabrieledonati" target="_blank" class="home__social-icon"><i class="bx bxl-medium" ></i></a>
+                        <a href="https://bsky.app/profile/godonuts.bsky.social" target="_blank" class="home__social-icon"><i class="bx bxl-twitter" ></i></a>   
+                    </div>
+                   
+              
+                </div>
+    
                 <div class="home__data">
+
+                   
                     <h1 class="home__title">Hi,<br>I am <span class="home__title-color">Gabriele</span><br>Product Manager</h1>
 
                     <a href="https://calendly.com/godonati/15min" target="_blank" class="home-schedule__button button">Schedule a Call</a>
@@ -57,7 +78,7 @@
                         
                 </div>
 
-                <div class="home__social">
+                <div id="desktop_social" class="home__social">
                     <a href="https://www.github.com/godonati" target="_blank" class="home__social-icon"><i class="bx bxl-github" ></i></a>
                     <a href="https://www.linkedin.com/in/godonati/" target="_blank" class="home__social-icon"><i class="bx bxl-linkedin" ></i></a>
                     <a href="https://www.youtube.com/@godonati" target="_blank" class="home__social-icon"><i class="bx bxl-youtube" ></i></a>
@@ -71,7 +92,7 @@
                         <mask id="mask0" mask-type="alpha">
                             <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
                         </mask>
-                        <g mask="url(#mask0)">
+                        <g id="desktop_profile" mask="url(#mask0)">
                             <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
                             <image class="home__blob-img" x="50" y="60" href="assets/img/profile.png"/>
                         </g>
@@ -82,32 +103,51 @@
             <!--===== ABOUT =====-->
             <section class="about section " id="about">
                 <h2 class="section-title">About</h2>
-
-                <div class="about__container bd-grid">
+                <div class="list">
+                    <button>Who am i</button>
+                    <button>How I Work?</button>
+                    <button>My role</button>
+                    <button>Questions</button>
+                </div>
+                <div class="about__container bd-grid" id="sobre">
+                
                     <div class="about__img">
                         <img src="assets/img/about.jpg" alt="">
                     </div>
                     
                     <div>
-                        <h2 class="about__subtitle">Who am I?</h2>
-                        <p class="about__text">
-                            
-                            <!--
-                            Hi there, I'm Gabriele, a seasoned Designer with a passion for project automation and data analysis. In my current role, I leverage my expertise to streamline processes and uncover valuable insights, driving growth and efficiency.
+                        <h2 class="about__subtitle" id="whowAmItitle">Who am I?</h2>
+                        <h2 class="about__subtitle hideText" id="howIworkTitle">How I Work?</h2>
+                        <h2 class="about__subtitle hideText" id="myRoleTitle">My Role</h2>
+                        <h2 class="about__subtitle hideText" id="questionsTitle">Questions</h2>
+                        <div id="aboutTextPlaceHolder">
+                            <ul id="howIwork" class="about__text hideText">
+                                <li id="howIworkLi">-Initiation Phase</li>
+                                <li>-Planning Phase</li>
+                                <li>-Execution Phase</li>
+                                <li>-Closure Phase</li>
+                            </ul>
+                            <p class="about__text" id="whoAmI">
+                                
+    
+                                I'm a former designer passionate about project automation and data analysis. In my current role, I use my expertise to streamline processes and uncover valuable insights, driving growth and efficiency.
+                                
+                                Previously, as CEO, I led a team of 30 people in creating impactful content in the marketing segment. Now, I'm looking to transition my Product Manager expertise into a role focusing on Blockchain, and Web3. I foster collaboration and have a goofy sense of humor. Let's connect!
+    
+                                                  
+                            </p> 
 
-                            Previously, I served as the CEO of a successful video marketing production company, leading a team of 30+ talented professionals in creating impactful content for international clients. Among my accomplishments, I'm particularly proud of developing internal tools that automated data extraction and analysis, enhancing our ability to make data-driven decisions.
-                            
-                            As I transition into a Product Manager role, I am eager to apply my skills in the decentralized space, focusing on Blockchain technology, Web3, and Crypto. My ability to foster collaboration and synergy among team members has always been a valuable asset, and I am excited to bring this strength to my new endeavors.
-                            
-                            On a personal note, I'm known for my infectious enthusiasm, love for learning, and a goofy sense of humor. I firmly believe that a positive attitude and a willingness to exchange ideas can lead to extraordinary results. Let's connect and explore the possibilities together!
-                            -->
+                            <p class="about__text hideText" id="myRole">As a Product Manager, my role is to oversee the development and success of a product from concept to launch. I work closely with different teams—like engineering, design, and marketing—to ensure the product meets user needs and business goals. My responsibilities include defining the product vision, prioritizing features, managing the roadmap, and making strategic decisions based on user feedback and market trends. Essentially, I act as a bridge between various teams to deliver a product that solves real problems and drives business value.</p>
 
-                            I'm a former designer passionate about project automation and data analysis. In my current role, I use my expertise to streamline processes and uncover valuable insights, driving growth and efficiency.
                             
-                            Previously, as CEO, I led a team of 30 people in creating impactful content in the marketing segment. Now, I'm looking to transition my Product Manager expertise into a role focusing on Blockchain, and Web3. I foster collaboration and have a goofy sense of humor. Let's connect!
-
-                                              
-                        </p> 
+                                <ul class="about__text hideText" id="questions">
+                                    <li>
+                                        <span>-What inspired you to make a career change into this field?</span><br>
+                                        I was inspired to move into Product Management because I wanted to have a greater impact on shaping the direction and success of products, rather than just contributing to one part of the process. My background in video production showed me the value of aligning creativity with business goals, and I wanted to leverage that experience to manage and build products from a strategic perspective.
+                                        </li>
+                                </ul>
+                       
+                        </div>
                         <br>
                         <div class="about__social">
                             <a href="https://www.github.com/godonati" target="_blank" class="about__social-icon"><i class="bx bxl-github" ></i></a>
@@ -125,14 +165,18 @@
                     </div>                                   
                 </div>
             </section>
+    
 
             <!--===== PRODUCTS =====-->
             <section class="work section" id="work">
                 <h2 class="section-title">Products</h2>
+                
 
                 <div class="work__container bd-grid">
-                    <a href="/assets/proj/product_1.html" class="work__img">
-                        <img src="assets/img/product_1.png" alt="">
+                    <a id="img1" href="file:///C:/Users/leand/Desktop/projeto%20gabi/godonati.github.io/viaPage.html" class="work__img">
+                       
+
+                        <p class="viaText"><strong>Via Production</strong> <br>A scalable video production management platform that streamlines content creation through efficient task management and creative freedom for editors."</p>
                     </a>
                     <a href="" class="work__img">
                         <img src="assets/img/work2.jpg" alt="">
@@ -189,21 +233,33 @@
                         <div class="skills__data">
                             <div class="skills__names">
                                 <i class='bx bxl-html5 skills__icon'></i>
-                                <span class="skills__name">HTML5</span>
+                                <span class="skills__name">Agile Development</span>
                             </div>
-                            <div class="skills__bar skills__html">
+                            <div class="skills__bar skills__agile">
 
                             </div>
                             <div>
-                                <span class="skills__percentage">95%</span>
+                                <span class="skills__percentage">90%</span>
                             </div>
                         </div>
                         <div class="skills__data">
                             <div class="skills__names">
                                 <i class='bx bxl-css3 skills__icon'></i>
-                                <span class="skills__name">CSS3</span>
+                                <span class="skills__name">Product Lifecycle </span>
                             </div>
-                            <div class="skills__bar skills__css">
+                            <div class="skills__bar skills__lifeCicle">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">80%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxl-javascript skills__icon' ></i>
+                                <span class="skills__name">Product Strategy</span>
+                            </div>
+                            <div class="skills__bar skills__js">
                                 
                             </div>
                             <div>
@@ -212,14 +268,75 @@
                         </div>
                         <div class="skills__data">
                             <div class="skills__names">
-                                <i class='bx bxl-javascript skills__icon' ></i>
-                                <span class="skills__name">JAVASCRIPT</span>
+                                <i class='bx bxs-paint skills__icon'></i>
+                                <span class="skills__name">Product Launch & Marketing</span>
                             </div>
-                            <div class="skills__bar skills__js">
+                            <div class="skills__bar skills__ux">
                                 
                             </div>
                             <div>
-                                <span class="skills__percentage">65%</span>
+                                <span class="skills__percentage">70%</span>
+                            </div>
+                        </div>
+
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxs-paint skills__icon'></i>
+                                <span class="skills__name">Roadmapping</span>
+                            </div>
+                            <div class="skills__bar skills__ux">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">75%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxs-paint skills__icon'></i>
+                                <span class="skills__name">Data Analysis & Metrics</span>
+                            </div>
+                            <div class="skills__bar skills__ux">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">70%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxs-paint skills__icon'></i>
+                                <span class="skills__name">Market Research </span>
+                            </div>
+                            <div class="skills__bar skills__ux">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">80%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxs-paint skills__icon'></i>
+                                <span class="skills__name">Stakeholders Communication</span>
+                            </div>
+                            <div class="skills__bar skills__ux">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">90%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxs-paint skills__icon'></i>
+                                <span class="skills__name">Budgeting</span>
+                            </div>
+                            <div class="skills__bar skills__ux">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">80%</span>
                             </div>
                         </div>
                         <div class="skills__data">
@@ -234,6 +351,31 @@
                                 <span class="skills__percentage">85%</span>
                             </div>
                         </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxs-paint skills__icon'></i>
+                                <span class="skills__name">Blockchain & Web 3</span>
+                            </div>
+                            <div class="skills__bar skills__ux">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">65%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bxs-paint skills__icon'></i>
+                                <span class="skills__name">Python & JS</span>
+                            </div>
+                            <div class="skills__bar skills__ux">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">60%</span>
+                            </div>
+                        </div>
+                        
                     </div>
                     
                     <div>              
