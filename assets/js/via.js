@@ -3,13 +3,15 @@ const personaHeader = document.getElementById('persona')
 const session_2 = document.getElementById('logo')
 const initSession_2 = new IntersectionObserver((init)=>{
     if(init[0].isIntersecting==false){
-        personaHeader.style.color = 'red'
-    } else{personaHeader.style.color = 'blue' }
+        personaHeader.classList.add('active-link')
+    } else{personaHeader.classList.remove('active-link')}
 })
 initSession_2.observe(session_2)
 
 const demographic = document.querySelector('.demographic')
 const nameSection = document.getElementById('name')
+const backGroundSession = document.getElementById('background')
+const painPoints = document.getElementById('painPoints')
 const allButtons = document.querySelectorAll(".persona_button")
 console.log(allButtons)
 allButtons[0].addEventListener('click',()=>{
@@ -50,6 +52,8 @@ allButtons[2].addEventListener('click',()=>{
     allButtons[2].style.backgroundColor='#83a4ff'
     allButtons[2].style.color='#3E6FF4'
     demographic.classList.add('hide')
+    nameSection.classList.add('hide')
+    backGroundSession.classList.remove("hide")
     for(var i=0;i<7;i++){
         if(i!=2)
         allButtons[i].style.backgroundColor='#3E6FF4'
@@ -71,6 +75,9 @@ allButtons[3].addEventListener('click',()=>{
     allButtons[3].style.backgroundColor='#83a4ff'
     allButtons[3].style.color='#3E6FF4'
     demographic.classList.add('hide')
+    nameSection.classList.add('hide')
+    back
+    painPoints.classList.remove('hide')
     for(var i=0;i<7;i++){
         if(i!=3)
         allButtons[i].style.backgroundColor='#3E6FF4'
