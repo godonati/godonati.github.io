@@ -78,7 +78,14 @@ img {
  
 }
 #aboutTextPlaceHolder{
-  max-height: 300px;
+  height: 300px;
+  margin: 0;
+
+} 
+table{border-collapse: collapse;margin: auto;}
+th,tr,td{
+  border: 2px solid rgb(0, 0, 0);
+  min-width: 260px;
 }
 #aboutTextPlaceHolder p{
   overflow-y: scroll;
@@ -173,7 +180,7 @@ img {
 }
 #logo{
   background-image: url('../img/logo_via.png');
- background-size: cover;
+  background-size: cover;
   width: 280px;
   height: 280px;
 }
@@ -195,6 +202,7 @@ z-index: 100;
   box-sizing: border-box;
   padding-inline: 170px;
   margin-top: 132px;
+  max-width: 100vw;
   margin-bottom: 100px;
 
 }
@@ -226,19 +234,98 @@ z-index: 100;
 }
 .persona_section{
   gap: 16px;
-  height: 640px;
+  height:fit-content;
   text-align: center;
+  padding-bottom: 50px;
   width: 92vw;
-  margin: 20px auto;
+  margin: 20px auto 100px auto;
   background-color: #fcfcfc;
 }
+.okr_section{
+  gap: 16px;
+  height:fit-content;
+  text-align: center;
+  padding-bottom: 50px;
+  width: 92vw;
+  margin: 20px auto 100px auto;
+  background-color: #fcfcfc;
+}
+.okr_section span{
+  margin-top: 80px!important;
+  font-size: 20px;
+  font-weight: bold;
+}
+.okr_section span:first-child{
+  margin-top: 0;
+}
+.okr_section li{
+  max-width: 520px;
+  text-align: center;
+  margin: auto auto 10px auto;
+  display: block;
+}
+.okr_section li:nth-child(3),.okr_section li:nth-child(8) {
+  margin-bottom: 70px;
+}
+.okr_section p{
+  width: 580px;
+  max-width: 100%;
+  text-align: center;
+  margin: auto;
+}
+#kpi p{
+  margin-bottom: 60px;
+}
 #backGroundP{
+  max-width: 100%;
   width:500px!important;
 }
 .persona_section p{
  
   margin: auto auto 16px auto;
 }
+#startBar{
+  width: 16px;
+  height: 16px;
+  clip-path: circle();
+  background-color: #3E6FF4;
+  margin: auto;
+  position: absolute;
+}
+
+.roadMapBar{
+  position: relative;
+  width: 3px;
+  background-color:#3E6FF4;
+  height: 140vh;
+  margin: auto;
+}
+.q2div{
+  transform: translateX(-620px);
+}
+.q2div > h2::before{
+  transform: translateX(362px) translateY(15px)!important ;
+  width: 140px!important;
+}
+.roadMapBar h2::before{
+  content: '';
+  width: 116px;
+  display: block;
+  transform: translateX(-120px) translateY(15px);
+  top: -20px;
+  height: 3px;
+  background-color: #3E6FF4;
+}
+.roadMapBar h2{
+  margin-top: 80px;
+  margin-left: 120px;
+  width: 350px!important;
+}
+.roadMapBar p{
+  width: 500px;
+  margin-left: 120px;
+}
+
 @media(max-width: 640px) {
   #mobile_profile{
     width: 300px;
@@ -818,15 +905,7 @@ z-index: 100;
   margin: auto auto 100px auto;
   justify-content: center;
 }
-#roadMapScroll{
-  box-sizing: border-box;
-  padding: 24px;
-  width: 100%;
-  position: relative;
-  overflow-y: scroll;
-  height: 100%;
-  background-color: #fdfdfd;
-}
+
 .roadMapTitle{
   color: #3E6FF4;
   text-align: center;
