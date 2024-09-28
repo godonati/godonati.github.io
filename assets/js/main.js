@@ -97,6 +97,10 @@ aboutButtons[1].addEventListener('click',(e)=>{
     },400)
     aboutTitle1.classList.add('hideText')
     aboutText1.classList.add('hideText')
+    aboutTitle3.classList.add('hideText')
+    aboutText3.classList.add('hideText')
+    aboutText4.classList.add('hideText')
+    aboutTitle4.classList.add('hideText')
     aboutButtons[1].style.backgroundColor = '#7fa1ff'
     aboutButtons[2].style.backgroundColor = '#3E6FF4'
     aboutButtons[3].style.backgroundColor = '#3E6FF4'
@@ -112,6 +116,8 @@ aboutButtons[2].addEventListener('click',(e)=>{
     aboutText2.classList.add('hideText')
     aboutTitle1.classList.add('hideText')
     aboutText1.classList.add('hideText')
+    aboutText4.classList.add('hideText')
+    aboutTitle4.classList.add('hideText')
     aboutButtons[2].style.backgroundColor = '#7fa1ff'
     aboutButtons[0].style.backgroundColor = '#3E6FF4'
     aboutButtons[1].style.backgroundColor = '#3E6FF4'
