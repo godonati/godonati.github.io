@@ -27,6 +27,7 @@ allButtons[0].addEventListener('click',()=>{
     allButtons[0].style.backgroundColor='#83a4ff'
     allButtons[0].style.color='#3E6FF4'
     demographic.classList.add('hide')
+    backGroundSession.classList.add('hide')
     nameSection.classList.remove('hide')
     for(var i=0;i<7;i++){
         if(i!=0)
@@ -39,6 +40,7 @@ allButtons[0].addEventListener('click',()=>{
 allButtons[1].addEventListener('click',()=>{
     allButtons[1].style.backgroundColor='#83a4ff'
     demographic.classList.remove('hide')
+    backGroundSession.classList.add('hide')
     nameSection.classList.add('hide')
     
     for(var i=0;i<7;i++){
@@ -76,7 +78,7 @@ allButtons[3].addEventListener('click',()=>{
     allButtons[3].style.color='#3E6FF4'
     demographic.classList.add('hide')
     nameSection.classList.add('hide')
-    back
+    backGroundSession.classList.add("hide")
     painPoints.classList.remove('hide')
     for(var i=0;i<7;i++){
         if(i!=3)
