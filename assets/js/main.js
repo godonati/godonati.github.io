@@ -88,7 +88,7 @@ aboutButtons[0].addEventListener('click',(e)=>{
     aboutButtons[1].style.backgroundColor = '#3E6FF4'
     aboutButtons[2].style.backgroundColor = '#3E6FF4'
     aboutButtons[3].style.backgroundColor = '#3E6FF4'
-    e.stopPropagation()
+ 
 })
 aboutButtons[1].addEventListener('click',(e)=>{
     setTimeout(()=>{
