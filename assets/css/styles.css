@@ -73,7 +73,7 @@ img {
   height: 0!important;
   margin: 0;
   padding: 0;
-  transition: 400ms;
+  transition: 1s!important;
   opacity: 0!important;
  
 }
@@ -89,9 +89,15 @@ th,tr,td{
 }
 #aboutTextPlaceHolder p{
   overflow-y: scroll;
-  max-height: 270px;
+  max-height: 310px;
 }
+#questions {
+  overflow-y: scroll;
+  height: 88%;
+}
+#questions li{margin-bottom: 20px;}
 #questions span{
+  font-size: 1.2rem;
   font-weight: bold;
 }
 /*===== CLASS CSS ===== */
@@ -238,8 +244,12 @@ z-index: 100;
   text-align: center;
   padding-bottom: 50px;
   width: 92vw;
+  transition: 200ms;
   margin: 20px auto 100px auto;
   background-color: #fcfcfc;
+}
+.persona_section *{
+  transition: 200ms;
 }
 .okr_section{
   gap: 16px;
@@ -250,11 +260,13 @@ z-index: 100;
   margin: 20px auto 100px auto;
   background-color: #fcfcfc;
 }
+
 .okr_section span{
   margin-top: 80px!important;
   font-size: 20px;
   font-weight: bold;
 }
+
 .okr_section span:first-child{
   margin-top: 0;
 }
@@ -338,6 +350,9 @@ z-index: 100;
     border: none!important;
     display: block!important;
   }
+  #aboutTextPlaceHolder{
+    height: 350px;
+  }
 
  
   .profile_div{
@@ -357,7 +372,7 @@ z-index: 100;
    
   }
   .home__social-icon{
-    width: 40px;
+    width: 0px;
     height: 100px;
     display: block;
   }
@@ -521,7 +536,7 @@ z-index: 100;
   margin-top: -50px;
   margin-left: 2%;
   margin-bottom: var(--mb-5);
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   color: var(--second-color);
 }
 .home__social-icon:hover {
@@ -578,6 +593,8 @@ z-index: 100;
   border-radius: 0.5rem;
 }
 .about__social {
+  box-sizing: border-box;
+  padding-top: 16px;
   text-align: center;
 }
 .about__social-icon {
@@ -661,10 +678,37 @@ z-index: 100;
   width: 80%;
 }
 .skills__js {
-  width: 65%;
+  width: 85%;
 }
 .skills__ux {
+  width: 70%;
+}
+.skills__dataAnalisy{
+  width: 70%;
+}
+.skills__mapping{
+  width: 75%;
+}
+.skills__metrics{
+  width: 70%;
+}
+.skills__research{
+  width: 80%;
+}
+.skills__communication{
+  width: 90%;
+}
+.skills__budge{
+  width: 80%;
+}
+.skills__ui{
   width: 85%;
+}
+.skills__chain{
+  width: 65%;
+}
+.skills__python{
+  width: 60%;
 }
 .skills__img {
   border-radius: 0.5rem;
@@ -904,6 +948,35 @@ z-index: 100;
   width: 90vw;
   margin: auto auto 100px auto;
   justify-content: center;
+}
+.roadmap_mobile{
+  display: none;
+}
+@media(max-width:640px){
+  .roadmap_container{
+    display: none;
+  }
+  .roadmap_mobile{display: block;}
+  .roadmap_mobile h2{text-align: center;}
+  .mobileBar{
+    height: 200px;
+  }
+  .mobileBar:first-child{
+    height: 100px;
+  }
+  .roadmap_mobile p{
+    text-align: center;
+  }
+  #startBar{
+    margin: auto;
+    position: absolute;
+    left: 48.2%;
+  }
+  .okr_section{
+    justify-content: center;
+    margin: auto;
+    overflow-x: scroll;
+  }
 }
 
 .roadMapTitle{
