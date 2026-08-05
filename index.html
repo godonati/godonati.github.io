@@ -1,465 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Gabriele O. Donati is a product manager who turns ambiguous problems into focused, measurable products.">
+    <meta name="theme-color" content="#111827">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <title>Gabriele O. Donati | Product Manager</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav shell" aria-label="Primary navigation">
+        <a class="brand" href="#" aria-label="Gabriele home"><img class="brand-signature" src="assets/img/signature.png" alt=""><span class="brand-label">Gabriele O. Donati</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+        <div class="nav-menu" id="nav-menu">
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#work">Work</a>
+          <a class="nav-link" href="#case-studies">Case studies</a>
+          <a class="nav-link" href="#skills">Strengths</a>
+          <a class="nav-cta" href="#contact">Let's talk <span aria-hidden="true">↗</span></a>
+        </div>
+      </nav>
+    </header>
 
-        <link rel="stylesheet" href="assets/css/styles.css">
+    <main id="home">
+      <section class="hero shell">
+        <div class="hero-copy">
+          <h1>I make complex products feel <em>obvious.</em></h1>
+          <p class="eyebrow"><span class="status-dot"></span> Product manager · systems thinker</p>
+          <p class="hero-lede">I connect customer insight, strategy, and execution to build products that are useful, measurable, and ready to scale.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://calendly.com/godonati/15min" target="_blank" rel="noreferrer">Schedule a call <span aria-hidden="true">↗</span></a>
+            <a class="button button-quiet" href="#work">See selected work <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-proof" aria-label="Highlights">
+            <div><strong>10×</strong><span>video output target</span></div>
+            <div><strong>30</strong><span>people led as CEO</span></div>
+            <div><strong>360°</strong><span>product perspective</span></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+          <div class="profile-frame"><img src="assets/img/profile.png" alt="Portrait of Gabriele O. Donati" width="520" height="520"></div>
+          <p class="floating-note note-top">Strategy<br><strong>→</strong> clarity</p>
+          <p class="floating-note note-bottom">Curiosity is<br>a product skill.</p>
+        </div>
+      </section>
 
-        <!-- =====BOX ICONS===== -->
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-
-        <title>Product Manager - Gabriele</title>
-    </head>
-    <body>
-        <!--===== HEADER =====-->
-        <header class="l-header">
-            <nav class="nav bd-grid">
-                <div>
-                    <a href="#contact" class="nav__mini_logo mini_menu_button">Contact Me</a>
-                    <a href="#" class="nav__logo">Gabriele O. Donati</a>
-                </div>
-
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
-                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="#work" class="nav__link">Products</a></li>
-                        <li class="nav__item"><a href="#case" class="nav__link">Case Studies</a></li>
-                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                    </ul>
-                </div>
-
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
-                </div>
-            </nav>
-        </header>
-
-        <main class="l-main">
-            <!--===== HOME =====-->
-            <section class="home bd-grid" id="home">
-                <div class="profile_div">
-                    <g id="mobile_profile" mask="url(#mask0)">
-                        <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-
-                        <image class="home__blob-img" x="50" y="60" href="assets/img/profile.png"/>
-                    </g>
-
-                    <div id="mobile_social">
-                        <a href="https://www.github.com/godonati" target="_blank" class="home__social-icon"><i class="bx bxl-github" ></i></a>
-                        <a href="https://www.linkedin.com/in/godonati/" target="_blank" class="home__social-icon"><i class="bx bxl-linkedin" ></i></a>
-                        <a href="https://www.youtube.com/@godonati" target="_blank" class="home__social-icon"><i class="bx bxl-youtube" ></i></a>
-                        <a href="https://open.spotify.com/show/5l1RJUNvAkFo0VsHUlTlz5" target="_blank" class="home__social-icon"><i class="bx bxl-spotify" ></i></a>
-                        <a href="https://medium.com/@gabrieledonati" target="_blank" class="home__social-icon"><i class="bx bxl-medium" ></i></a>
-                        <a href="https://bsky.app/profile/godonuts.bsky.social" target="_blank" class="home__social-icon"><i class="bx bxl-twitter" ></i></a>   
-                    </div>
-                   
-              
-                </div>
-    
-                <div class="home__data">
-
-                   
-                    <h1 class="home__title">Hi,<br>I am <span class="home__title-color">Gabriele</span><br>Product Manager</h1>
-
-                    <a href="https://calendly.com/godonati/15min" target="_blank" class="home-schedule__button button">Schedule a Call</a>
-                    <!-- "/assets/pdf/gabrieledonati_resume.pdf" -->
-                    <a href="" target="_blank" class="home-resume__button button">Resume
-                        
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" id="download">
-                            <g fill="none" fill-rule="evenodd" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                <path d="m8 15 4 4 4-4M12 10v9"></path>
-                                <path d="M20.88 16.09A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 3 14.29"></path>
-                            </g>
-                        </svg>
-                        
-                    </a>
-                        
-                </div>
-
-                <div id="desktop_social" class="home__social">
-                    <a href="https://www.github.com/godonati" target="_blank" class="home__social-icon"><i class="bx bxl-github" ></i></a>
-                    <a href="https://www.linkedin.com/in/godonati/" target="_blank" class="home__social-icon"><i class="bx bxl-linkedin" ></i></a>
-                    <a href="https://www.youtube.com/@godonati" target="_blank" class="home__social-icon"><i class="bx bxl-youtube" ></i></a>
-                    <a href="https://open.spotify.com/show/5l1RJUNvAkFo0VsHUlTlz5" target="_blank" class="home__social-icon"><i class="bx bxl-spotify" ></i></a>
-                    <a href="https://medium.com/@gabrieledonati" target="_blank" class="home__social-icon"><i class="bx bxl-medium" ></i></a>
-                    <a href="https://bsky.app/profile/godonuts.bsky.social" target="_blank" class="home__social-icon"><i class="bx bxl-twitter" ></i></a>                      
-                </div>
-
-                <div class="home__img">
-                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <mask id="mask0" mask-type="alpha">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                        </mask>
-                        <g id="desktop_profile" mask="url(#mask0)">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                            <image class="home__blob-img" x="50" y="60" href="assets/img/profile.png"/>
-                        </g>
-                    </svg>
-                </div>
-            </section>
-
-            <!--===== ABOUT =====-->
-            <section class="about section " id="about">
-                <h2 class="section-title">About</h2>
-                <div class="list">
-                    <button>Who am i</button>
-                    <button>How I Work?</button>
-                    <button>My role</button>
-                    <button>Questions</button>
-                </div>
-                <div class="about__container bd-grid" id="sobre">
-                
-                    <div class="about__img">
-                        <img src="assets/img/about.jpg" alt="">
-                    </div>
-                    
-                    <div>
-                        <h2 class="about__subtitle" id="whowAmItitle">Who am I?</h2>
-                        <h2 class="about__subtitle hideText" id="howIworkTitle">How I Work?</h2>
-                        <h2 class="about__subtitle hideText" id="myRoleTitle">My Role</h2>
-                        <h2 class="about__subtitle hideText" id="questionsTitle">Questions</h2>
-                        <div id="aboutTextPlaceHolder">
-                            <ul id="howIwork" class="about__text hideText">
-                                <li id="howIworkLi">-Initiation Phase</li>
-                                <li>-Planning Phase</li>
-                                <li>-Execution Phase</li>
-                                <li>-Closure Phase</li>
-                            </ul>
-                            <p class="about__text" id="whoAmI">
-                                
-    
-                                I'm a former designer passionate about project automation and data analysis. In my current role, I use my expertise to streamline processes and uncover valuable insights, driving growth and efficiency.
-                                
-                                Previously, as CEO, I led a team of 30 people in creating impactful content in the marketing segment. Now, I'm looking to transition my Product Manager expertise into a role focusing on Blockchain, and Web3. I foster collaboration and have a goofy sense of humor. Let's connect!
-    
-                                                  
-                            </p> 
-
-                            <p class="about__text hideText" id="myRole">As a Product Manager, my role is to oversee the development and success of a product from concept to launch. I work closely with different teams—like engineering, design, and marketing—to ensure the product meets user needs and business goals. My responsibilities include defining the product vision, prioritizing features, managing the roadmap, and making strategic decisions based on user feedback and market trends. Essentially, I act as a bridge between various teams to deliver a product that solves real problems and drives business value.</p>
-
-                            
-                                <ul class="about__text hideText" id="questions">
-                                    <li>
-                                        <span>-What inspired you to make a career change into this field?</span><br>
-                                        I was inspired to move into Product Management because I wanted to have a greater impact on shaping the direction and success of products, rather than just contributing to one part of the process. My background in video production showed me the value of aligning creativity with business goals, and I wanted to leverage that experience to manage and build products from a strategic perspective.
-                                      
-                                        </li>
-                                        <li><span>What did you enjoy most about creating the “Via Production” product?
-                                           
-                                            </span> <br> What I enjoyed most about creating the "Via Production" product was the opportunity to streamline the video production process, enabling teams to produce high-quality content more efficiently. It was fulfilling to see how empowering editors with creative freedom led to innovative videos that truly resonated with the marketing goals of the company.</li>
-
-                                            <li><span>What did you enjoy about creating your portfolio project?</span> <br>
-                                                I enjoyed creating my portfolio project because it allowed me to showcase my skills and experiences in a structured way, highlighting the impact of my work on product development. It was rewarding to synthesize my achievements into a cohesive narrative that illustrates my journey and growth as a Product Manager.
-                                                </li>
-
-                                                <li><span>With regards to your career and skills, what are your hopes for the future?</span> <br>
-                                                    I hope to continue expanding my expertise in Product Management by taking on more complex projects that challenge me and allow for innovation. Ultimately, I aspire to lead cross-functional teams in developing products that make a meaningful difference in users' lives while driving business success.
-                                                    </li>
-                                </ul>
-                       
-                        </div>
-                        <br>
-                        <div class="about__social">
-                            <a href="https://www.github.com/godonati" target="_blank" class="about__social-icon"><i class="bx bxl-github" ></i></a>
-                            <a href="https://www.linkedin.com/in/godonati/" target="_blank" class="about__social-icon"><i class="bx bxl-linkedin" ></i></a>
-                            <a href="https://www.youtube.com/@godonati" target="_blank" class="about__social-icon"><i class="bx bxl-youtube" ></i></a>
-                            <a href="https://open.spotify.com/show/5l1RJUNvAkFo0VsHUlTlz5" target="_blank" class="about__social-icon"><i class="bx bxl-spotify" ></i></a>
-                            <a href="https://medium.com/@gabrieledonati" target="_blank" class="about__social-icon"><i class="bx bxl-medium" ></i></a>
-                            <a href="https://bsky.app/profile/godonuts.bsky.social" target="_blank" class="about__social-icon"><i class="bx bxl-twitter" ></i></a>
-                            
-                            <br><br>
-
-                            <a href="#contact" class="about-message__button button">Message Me</a>
-
-                        </div>
-                    </div>                                   
-                </div>
-            </section>
-    
-
-            <!--===== PRODUCTS =====-->
-            <section class="work section" id="work">
-                <h2 class="section-title">Products</h2>
-                
-
-                <div class="work__container bd-grid">
-                    <a id="img1" href="product_1.html" class="work__img">
-                       
-
-                        <p class="viaText"><strong>Via Production</strong> <br>A scalable video production management platform that streamlines content creation through efficient task management and creative freedom for editors."</p>
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work2.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work3.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work4.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work5.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work6.jpg" alt="">
-                    </a>
-                </div>
-            </section>
-
-            <!--===== CASE STUDIES =====-->
-            <section class="work section" id="case">
-                <h2 class="section-title">Case Studies</h2>
-
-                <div class="work__container bd-grid">
-                    <a href="" class="work__img">
-                        <img src="assets/img/work1.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work2.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work3.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work4.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work5.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work6.jpg" alt="">
-                    </a>
-                </div>
-            </section>
-
-            <!--===== SKILLS =====-->
-            <section class="skills section" id="skills">
-                <h2 class="section-title">Skills</h2>
-
-                <div class="skills__container bd-grid">          
-                    <div>
-                        <h2 class="skills__subtitle">Profesional Skills</h2>
-                        <p class="skills__text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Velit optio id vero amet, alias architecto consectetur error eum eaque sit.</p>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-html5 skills__icon'></i>
-                                <span class="skills__name">Agile Development</span>
-                            </div>
-                            <div class="skills__bar skills__agile">
-
-                            </div>
-                            <div>
-                                <span class="skills__percentage">90%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-css3 skills__icon'></i>
-                                <span class="skills__name">Product Lifecycle </span>
-                            </div>
-                            <div class="skills__bar skills__lifeCicle">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">80%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-javascript skills__icon' ></i>
-                                <span class="skills__name">Product Strategy</span>
-                            </div>
-                            <div class="skills__bar skills__js">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">85%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">Product Launch & Marketing</span>
-                            </div>
-                            <div class="skills__bar skills__dataAnalisy">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">70%</span>
-                            </div>
-                        </div>
-
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">Roadmapping</span>
-                            </div>
-                            <div class="skills__bar skills__mapping">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">75%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">Data Analysis & Metrics</span>
-                            </div>
-                            <div class="skills__bar skills__metrics">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">70%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">Market Research </span>
-                            </div>
-                            <div class="skills__bar skills__research">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">80%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">Stakeholders Communication</span>
-                            </div>
-                            <div class="skills__bar skills__communication">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">90%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">Budgeting</span>
-                            </div>
-                            <div class="skills__bar skills__budge">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">80%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">UX/UI</span>
-                            </div>
-                            <div class="skills__bar skills__ui">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">85%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">Blockchain & Web 3</span>
-                            </div>
-                            <div class="skills__bar skills__chain">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">65%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">Python & JS</span>
-                            </div>
-                            <div class="skills__bar skills__python">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">60%</span>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                    <div>              
-                        <img src="assets/img/work3.jpg" alt="" class="skills__img">
-                    </div>
-                </div>
-            </section>
-
-            <!--===== CONTACT =====-->
-            <section id="contact" class="contact section">
-                <h2 class="section-title">Contact</h2>
-
-                <div class="contact__container bd-grid">
-
-                    <div class="contact__social">
-                        <a href="https://www.github.com/godonati" target="_blank" class="contact__social-icon"><i class="bx bxl-github" ></i></a>
-                        <a href="https://www.linkedin.com/in/godonati/" target="_blank" class="contact__social-icon"><i class="bx bxl-linkedin" ></i></a>
-                        <a href="https://www.youtube.com/@godonati" target="_blank" class="contact__social-icon"><i class="bx bxl-youtube" ></i></a>
-                        <a href="https://open.spotify.com/show/5l1RJUNvAkFo0VsHUlTlz5" target="_blank" class="contact__social-icon"><i class="bx bxl-spotify" ></i></a>
-                        <a href="https://medium.com/@gabrieledonati" target="_blank" class="contact__social-icon"><i class="bx bxl-medium" ></i></a>
-                        <a href="https://bsky.app/profile/godonuts.bsky.social" target="_blank" class="contact__social-icon"><i class="bx bxl-twitter" ></i></a>                      
-                    </div>
-
-                    <form id="contact-form" action="https://formspree.io/f/xjkbzvod" class="contact__form" method="POST">
-                        <input type="text" placeholder="Name" id="first-name" name="name" class="contact__input" required>
-                        <input type="mail" placeholder="Email" id="email" name="email" class="contact__input" required>
-                        <input type="text" placeholder="Subject" id="subject" name="subject" class="contact__input" required>
-                        <textarea id="message" name="message" cols="0" rows="10" class="contact__input" required></textarea>
-                        <input type="submit" value="Send Message" class="contact-message__button button">
-                    </form>
-
-                    <br>
-
-                    <a href="https://calendly.com/godonati/15min" target="_blank" class="contact-schedule__button button">Schedule a Call</a>
-                    
-                </div>
-            </section>
-
-            <script>
-                document.getElementById('contact-form').addEventListener('submit', function(event) {
-                    var email = document.getElementById('email').value;
-                    var firstName = document.getElementById('first-name').value;
-                    var lastName = document.getElementById('last-name').value;
-                    var subject = document.getElementById('subject').value;
-                    var message = document.getElementById('message').value;
-            
-                    if (!email || !firstName || !lastName || !subject || !message) {
-                        alert('Please fill out all fields.');
-                        event.preventDefault();
-                    }
-                });
-            </script>
-
-        <!--===== FOOTER =====-->
-        <footer class="footer">
-            <p class="footer__title">Gabriele O. Donati</p>
-            <div class="footer__social">
-                <a href="https://www.github.com/godonati" target="_blank" class="footer__icon"><i class="bx bxl-github" ></i></a>
-                <a href="https://www.linkedin.com/in/godonati/" target="_blank" class="footer__icon"><i class="bx bxl-linkedin" ></i></a>
-                <a href="https://www.youtube.com/@godonati" target="_blank" class="footer__icon"><i class="bx bxl-youtube" ></i></a>
-                <a href="https://open.spotify.com/show/5l1RJUNvAkFo0VsHUlTlz5" target="_blank" class="footer__icon"><i class="bx bxl-spotify" ></i></a>
-                <a href="https://medium.com/@gabrieledonati" target="_blank" class="footer__icon"><i class="bx bxl-medium" ></i></a>
-                <a href="https://bsky.app/profile/godonuts.bsky.social" target="_blank" class="footer__icon"><i class="bx bxl-twitter" ></i></a>
+      <section class="section shell" id="about">
+        <div class="section-heading"><p class="eyebrow">A little context</p><h2>From creative chaos<br>to <em>clear momentum.</em></h2></div>
+        <div class="about-grid">
+          <div class="about-image"><img src="assets/img/about.png" alt="Gabriele O. Donati in a navy suit" loading="lazy" width="1024" height="1536"></div>
+          <div class="about-content">
+            <div class="tabs" role="tablist" aria-label="About Gabriele">
+              <button class="tab is-active" role="tab" aria-selected="true" aria-controls="tab-who" id="tab-button-who" data-tab="who">Who I am</button>
+              <button class="tab" role="tab" aria-selected="false" aria-controls="tab-how" id="tab-button-how" data-tab="how">How I work</button>
+              <button class="tab" role="tab" aria-selected="false" aria-controls="tab-role" id="tab-button-role" data-tab="role">My role</button>
             </div>
-            <p class="footer__copy">&#169; Donati. All rigths reserved</p>
-        </footer>
+            <div class="tab-panel" id="tab-who" role="tabpanel" aria-labelledby="tab-button-who"><p>I’m a former designer turned product manager, passionate about automation, data, and the small details that make a product click. I’ve led teams, built systems, and learned to translate fuzzy questions into useful next steps.</p><p>Today I’m especially interested in products at the intersection of technology, creativity, and Web3.</p></div>
+            <div class="tab-panel" id="tab-how" role="tabpanel" aria-labelledby="tab-button-how" hidden><p>My process is deliberately lightweight: understand the customer, align on the outcome, ship the smallest useful version, and keep learning from evidence.</p><ol class="process-list"><li>Frame the problem</li><li>Align the team</li><li>Ship and measure</li><li>Learn and iterate</li></ol></div>
+            <div class="tab-panel" id="tab-role" role="tabpanel" aria-labelledby="tab-button-role" hidden><p>I work as the bridge between customer needs, business goals, design, and engineering. Owning the why, making trade-offs visible, and keeping the team moving toward a meaningful outcome.</p><a href="#contact" class="text-link">Start a conversation <span aria-hidden="true">↗</span></a></div>
+          </div>
+        </div>
+      </section>
 
+      <section class="quote-section"><div class="shell quote-grid"><div class="quote-image"><img src="assets/img/quote.png" alt="Gabriele working at a desk" loading="lazy" width="640" height="800"></div><div class="quote-content"><p class="eyebrow">A principle I carry</p><blockquote>“Good automation removes friction, not ownership.”</blockquote><p>Technology should make people more capable, not less involved. The best systems create space for better judgment, better craft, and better work.</p><cite>- Gabriele O. Donati</cite></div></div></section>
 
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
+      <section class="section section-dark" id="work">
+        <div class="shell"><div class="section-heading heading-light"><p class="eyebrow">Selected work</p><h2>Products built around<br><em>real constraints.</em></h2></div>
+          <article class="featured-project"><div class="project-image"><img src="assets/img/logo_via.png" alt="Via Production logo" loading="lazy" width="640" height="640"></div><div class="project-copy"><p class="project-label">01 · Product case study</p><h3>Via Production</h3><p>A scalable video production management platform designed to help marketing teams create more content without sacrificing quality, cost, or creative freedom.</p><div class="tag-list"><span>Product strategy</span><span>Operations</span><span>Marketplace thinking</span></div><a class="button button-light" href="product_1.html">Explore the case study <span aria-hidden="true">↗</span></a></div></article>
+          <div class="work-grid"><div class="work-card"><span>02</span><h3>Process automation</h3><p>Turning repetitive workflows into calm, visible systems.</p></div><div class="work-card"><span>03</span><h3>Data-informed decisions</h3><p>Connecting signals to the choices a team needs to make.</p></div><div class="work-card"><span>04</span><h3>Creative collaboration</h3><p>Giving talented people clarity without taking away their craft.</p></div></div>
+        </div>
+      </section>
 
-        <!--===== MAIN JS =====-->
-        <script src="assets/js/main.js"></script>
-    </body>
+      <section class="section case-studies-section" id="case-studies"><div class="shell"><div class="section-heading"><p class="eyebrow">Case studies</p><h2>How I turn messy<br>work into <em>momentum.</em></h2></div><div class="case-study-grid"><a class="case-study-card" href="globo.html"><span class="case-study-index">02</span><div><p class="eyebrow">Work case study</p><h3>Globo video autonomy</h3><p>Helping a high-volume branded-content workflow produce more independently, with less repetitive work and more room for creative decisions.</p><strong>Read the case study ↗</strong></div></a><a class="case-study-card" href="ai-file-organizer.html"><span class="case-study-index">03</span><div><p class="eyebrow">Personal product exploration</p><h3>AI file organizer</h3><p>A focused exploration of classification, automation, trust, and human review for messy files.</p><strong>See the product thinking ↗</strong></div></a></div></div></section>
+      <section class="section shell" id="skills"><div class="section-heading"><p class="eyebrow">Strengths</p><h2>Useful at the edges<br>of <em>different teams.</em></h2></div><div class="strengths-grid"><div class="strength-card"><span class="strength-number">01</span><h3>Product strategy</h3><p>Vision, positioning, prioritization, and roadmaps that stay connected to outcomes.</p></div><div class="strength-card"><span class="strength-number">02</span><h3>Delivery systems</h3><p>Practical rituals and operating models that help cross-functional teams execute.</p></div><div class="strength-card"><span class="strength-number">03</span><h3>Customer empathy</h3><p>Research, synthesis, and storytelling that keep the user's reality in the room.</p></div><div class="strength-card"><span class="strength-number">04</span><h3>Leadership</h3><p>Calm communication, clear decisions, and momentum through ambiguity.</p></div></div></section>
+
+      <section class="contact-section" id="contact"><div class="shell contact-grid"><div><p class="eyebrow">Have a good problem?</p><h2>Let’s make it<br><em>useful.</em></h2><p class="contact-lede">Tell me what you’re building, what feels stuck, or what you’re curious about.</p><div class="social-links"><a href="https://www.linkedin.com/in/godonati/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="https://www.github.com/godonati" target="_blank" rel="noreferrer">GitHub ↗</a><a href="mailto:gabriele@godonati.com">Email ↗</a></div></div><form id="contact-form" action="https://formspree.io/f/xjkbzvod" method="POST"><label>Name<input type="text" name="name" autocomplete="name" required></label><label>Email<input type="email" name="email" autocomplete="email" required></label><label>Message<textarea name="message" rows="4" required></textarea></label><button class="button button-primary" type="submit">Send message <span aria-hidden="true">↗</span></button><p class="form-status" role="status" aria-live="polite"></p></form></div></section>
+    </main>
+    <footer class="footer"><div class="shell"><span>© 2026 Gabriele O. Donati</span><span>Made with intent.</span></div></footer>
+    <script src="assets/js/main.js" defer></script>
+  </body>
 </html>
