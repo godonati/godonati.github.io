@@ -16,7 +16,7 @@ const server = createServer(async (request, response) => {
     const info = await stat(target);
     if (!info.isFile()) throw new Error('Not a file');
     const extension = extname(target).toLowerCase();
-    response.writeHead(200, { 'Content-Type': types[extension] || 'application/octet-stream', 'Cache-Control': extension === '.html' ? 'no-cache' : 'public, max-age=3600' });
+    response.writeHead(200, { 'Content-Type': types[extension] || 'application/octet-stream', 'Cache-Control': 'no-cache, no-store, must-revalidate' });
     response.end(await readFile(target));
   } catch {
     response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
