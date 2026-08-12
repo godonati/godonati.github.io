@@ -142,14 +142,22 @@ function closeProjectIframe() {
     return;
   }
 
+  iframe.classList.add('is-closing');
   iframe.classList.remove('is-visible');
   window.history.pushState(null, '', 'index.html');
 
   setTimeout(() => {
     iframe.remove();
     window.scrollTo(0, savedScrollY);
-  }, 600);
+  }, 750);
 }
+
+window.addEventListener('message', (event) => {
+  if (event.origin !== window.location.origin || event.data?.type !== 'project-brand-home') return;
+
+  savedScrollY = 0;
+  closeProjectIframe();
+});
 
 function slideUpProjectIframe(href) {
   closeMenu();
@@ -175,9 +183,19 @@ function slideUpProjectIframe(href) {
         const linkHref = link.getAttribute('href');
         if (!linkHref) return;
 
+        if (link.classList.contains('brand')) {
+          link.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            window.parent.postMessage({ type: 'project-brand-home' }, window.location.origin);
+          });
+          return;
+        }
+
         if (linkHref.includes('index.html') || linkHref.startsWith('#')) {
           link.addEventListener('click', (event) => {
             event.preventDefault();
+            event.stopPropagation();
             closeProjectIframe();
           });
         }

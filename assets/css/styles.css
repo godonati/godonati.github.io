@@ -86,12 +86,17 @@ img {
     z-index: 2000;
     background: var(--paper);
     transform: translateY(100vh);
-    transition: transform .6s cubic-bezier(.16, 1, .3, 1);
+    transition: transform .8s cubic-bezier(.22, 1, .36, 1);
     will-change: transform
 }
 
 .project-slide-iframe.is-visible {
     transform: translateY(0)
+}
+
+.project-slide-iframe.is-closing {
+    transition-duration: .75s;
+    transition-timing-function: cubic-bezier(.65, .05, .35, .95)
 }
 
 @media (prefers-reduced-motion: reduce) {
