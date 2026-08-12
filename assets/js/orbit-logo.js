@@ -13,6 +13,61 @@ let instanceCounter = 0;
 
 
 /* ============================================================
+   DEFAULT LOGO CONFIGURATION
+   Single central place to edit all characteristics of the logo.
+   ============================================================ */
+
+export const DEFAULT_CONFIG = {
+  /* --- LOGO VARIANT & SYMMETRY --- */
+  variant: "stardust",       // "stardust" | "glow"
+  symmetry: "asymmetric",    // "asymmetric" | "symmetric"
+  seed: 202,                 // Seed for particle pseudorandom generator
+
+  /* --- ORBIT DYNAMICS & PHYSICS --- */
+  duration: 15,              // Orbit completion duration in seconds (min: 0.5)
+  eccentricity: 0.25,        // Orbit eccentricity (0 = circular, max: 0.45)
+  orientation: 90,          // Orbit rotation in degrees (-180 to 180)
+  direction: "left",         // Direction: "left" (counter-clockwise) | "right" (clockwise)
+  progress: 0.09,            // Satellite initial orbit position (0.0 to 1.0)
+
+  /* --- SATELLITE / MOON --- */
+  moonRadius: 3.05,          // Moon particle radius (min: 0.5)
+  clearance: 5,            // Clearance distance around core elements (min: 0)
+
+  /* --- DUST & FLOATING PARTICLES --- */
+  dustMotionEnabled: true,   // Enable subtle floating/twinkling movement
+  dustIntensity: 6,          // Particle movement amplitude scale (0 to 10)
+  dustDensity: 1.2,          // Global particle count multiplier (0.25 to 4.0)
+
+  /* --- CENTRAL BODY RADIUS --- */
+  stardustCentralBodyRadius: 31.2,
+  glowCentralBodyRadius: 31.5,
+
+  /* --- STARDUST PARTICLES PARAMETERS --- */
+  stardustSymmetricCount: 190,
+  stardustAsymmetricCount: 235,
+  stardustBaseRadius: 34,
+  stardustRadialSpreadSymmetric: 2.15,
+  stardustRadialSpreadAsymmetric: 2.5,
+  stardustMinSize: 0.16,
+  stardustMaxSize: 0.56,
+  stardustMinOpacity: 0.16,
+  stardustMaxOpacity: 0.9,
+
+  /* --- GLOW PARTICLES PARAMETERS --- */
+  glowNearSpeckCount: 125,
+  glowFarSpeckCount: 70,
+  glowSymmetricCount: 90,
+  glowAsymmetricCount: 120,
+
+  /* --- SVG CANVAS LAYOUT --- */
+  viewBox: "-75 -75 250 250",
+  preserveAspectRatio: "xMidYMid meet"
+};
+
+
+
+/* ============================================================
    PARTICLE DEPTH / PARALLAX LAYERS
 
    FAR:
@@ -189,7 +244,7 @@ function mulberry32(
 
     ) /
 
-    4294967296;
+      4294967296;
 
   };
 
@@ -272,7 +327,7 @@ function wrapAngle(
 
   ) %
 
-  TAU;
+    TAU;
 
 }
 
@@ -340,7 +395,7 @@ function getVariantMotionScale(
   return (
 
     variant ===
-    "glow"
+      "glow"
 
       ? 0.72
 
@@ -373,7 +428,7 @@ function createParticleMotion({
   const preset =
 
     PARTICLE_LAYER_PRESETS[
-      layerIndex
+    layerIndex
     ];
 
 
@@ -645,7 +700,7 @@ function createSymmetricParticles({
     pairCount;
 
     index +=
-      1
+    1
 
   ) {
 
@@ -833,10 +888,10 @@ function createAsymmetricParticles({
       0;
 
     index <
-      count;
+    count;
 
     index +=
-      1
+    1
 
   ) {
 
@@ -1022,10 +1077,10 @@ function createGlowSpeckField({
       0;
 
     index <
-      count;
+    count;
 
     index +=
-      1
+    1
 
   ) {
 
@@ -1183,12 +1238,13 @@ function createGlowSpeckField({
 
 export class OrbitLogo {
 
+  static DEFAULTS = DEFAULT_CONFIG;
+
 
   constructor(
     element,
     options = {}
   ) {
-
 
     this.element =
       element;
@@ -1198,300 +1254,71 @@ export class OrbitLogo {
       ++instanceCounter;
 
 
-
     /* ========================================================
-       LOGO TYPE
+       RESOLVE CONFIGURATION
+       DEFAULT_CONFIG <- options <- element.dataset
        ======================================================== */
 
-    this.variant =
+    this.config = {
+      ...DEFAULT_CONFIG,
+      ...options
+    };
 
-      options.variant ??
 
-      element.dataset.variant ??
+    if (element.dataset.variant) {
+      this.config.variant = element.dataset.variant;
+    }
 
-      "stardust";
+    if (element.dataset.symmetry) {
+      this.config.symmetry = element.dataset.symmetry;
+    }
 
+    if (element.dataset.duration !== undefined) {
+      this.config.duration = Number(element.dataset.duration);
+    }
 
-    this.symmetry =
+    if (element.dataset.eccentricity !== undefined) {
+      this.config.eccentricity = Number(element.dataset.eccentricity);
+    }
 
-      options.symmetry ??
+    if (element.dataset.orientation !== undefined) {
+      this.config.orientation = Number(element.dataset.orientation);
+    }
 
-      element.dataset.symmetry ??
+    if (element.dataset.seed !== undefined) {
+      this.config.seed = Number(element.dataset.seed);
+    }
 
-      "asymmetric";
+    if (element.dataset.progress !== undefined) {
+      this.config.progress = Number(element.dataset.progress);
+    }
 
+    if (element.dataset.moonRadius !== undefined) {
+      this.config.moonRadius = Number(element.dataset.moonRadius);
+    }
 
+    if (element.dataset.clearance !== undefined) {
+      this.config.clearance = Number(element.dataset.clearance);
+    }
 
-    /* ========================================================
-       ORBIT SPEED
-       ======================================================== */
+    if (element.dataset.direction) {
+      this.config.direction = element.dataset.direction;
+    }
 
-    this.duration =
+    if (element.dataset.dustMotion !== undefined) {
+      this.config.dustMotionEnabled = element.dataset.dustMotion !== "false";
+    }
 
-      Math.max(
+    if (element.dataset.dustIntensity !== undefined) {
+      this.config.dustIntensity = Number(element.dataset.dustIntensity);
+    }
 
-        0.5,
+    if (element.dataset.dustDensity !== undefined) {
+      this.config.dustDensity = Number(element.dataset.dustDensity);
+    }
 
-        Number(
 
-          options.duration ??
-
-          element.dataset.duration ??
-
-          15
-
-        )
-
-      );
-
-
-
-    /* ========================================================
-       ORBIT ECCENTRICITY
-       ======================================================== */
-
-    this.eccentricity =
-
-      Math.min(
-
-        0.45,
-
-        Math.max(
-
-          0,
-
-          Number(
-
-            options.eccentricity ??
-
-            element.dataset.eccentricity ??
-
-            0.25
-
-          )
-
-        )
-
-      );
-
-
-
-    /* ========================================================
-       ORBIT ORIENTATION
-       ======================================================== */
-
-    const orientationDegrees =
-
-      Number(
-
-        options.orientation ??
-
-        element.dataset.orientation ??
-
-        -24
-
-      );
-
-
-    this.orientation =
-
-      orientationDegrees *
-
-      Math.PI /
-
-      180;
-
-
-
-    /* ========================================================
-       PARTICLE SEED
-       ======================================================== */
-
-    this.seed =
-
-      Number(
-
-        options.seed ??
-
-        element.dataset.seed ??
-
-        202
-
-      );
-
-
-
-    /* ========================================================
-       MOON START POSITION
-       ======================================================== */
-
-    this.progress =
-
-      Number(
-
-        options.progress ??
-
-        element.dataset.progress ??
-
-        0.09
-
-      );
-
-
-
-    /* ========================================================
-       MOON SIZE
-       ======================================================== */
-
-    this.moonRadius =
-
-      Math.max(
-
-        0.5,
-
-        Number(
-
-          options.moonRadius ??
-
-          element.dataset.moonRadius ??
-
-          3.05
-
-        )
-
-      );
-
-
-
-    /* ========================================================
-       COLLISION CLEARANCE
-       ======================================================== */
-
-    this.clearance =
-
-      Math.max(
-
-        0,
-
-        Number(
-
-          options.clearance ??
-
-          element.dataset.clearance ??
-
-          3.2
-
-        )
-
-      );
-
-
-
-    /* ========================================================
-       ORBIT DIRECTION
-       ======================================================== */
-
-    this.direction =
-
-      options.direction ??
-
-      element.dataset.direction ??
-
-      "left";
-
-
-    this.directionMultiplier =
-
-      this.direction ===
-
-      "left"
-
-        ? -1
-
-        : 1;
-
-
-
-    /* ========================================================
-       DUST MOVEMENT
-       ======================================================== */
-
-    this.dustMotionEnabled =
-
-      options.dustMotionEnabled ??
-
-      (
-
-        element.dataset.dustMotion !==
-
-        "false"
-
-      );
-
-
-
-    /* ========================================================
-       DUST INTENSITY
-
-       Controls movement distance.
-       ======================================================== */
-
-    this.dustIntensity =
-
-      Math.min(
-
-        10,
-
-        Math.max(
-
-          0,
-
-          Number(
-
-            options.dustIntensity ??
-
-            element.dataset.dustIntensity ??
-
-            6
-
-          )
-
-        )
-
-      );
-
-
-
-    /* ========================================================
-       DUST DENSITY
-
-       Controls particle count.
-       ======================================================== */
-
-    this.dustDensity =
-
-      Math.min(
-
-        4,
-
-        Math.max(
-
-          0.25,
-
-          Number(
-
-            options.dustDensity ??
-
-            element.dataset.dustDensity ??
-
-            1.2
-
-          )
-
-        )
-
-      );
-
+    this.applyConfig();
 
 
     /* ========================================================
@@ -1552,11 +1379,11 @@ export class OrbitLogo {
         {
 
           viewBox:
-            "-75 -75 250 250",
+            this.config.viewBox,
 
 
           preserveAspectRatio:
-            "xMidYMid meet",
+            this.config.preserveAspectRatio,
 
 
           "aria-hidden":
@@ -1602,6 +1429,142 @@ export class OrbitLogo {
         );
 
     }
+
+  }
+
+
+
+  /* ==========================================================
+     APPLY & UPDATE CONFIGURATION
+     ========================================================== */
+
+  applyConfig() {
+
+    this.variant =
+      this.config.variant;
+
+
+    this.symmetry =
+      this.config.symmetry;
+
+
+    this.duration =
+
+      Math.max(
+        0.5,
+        Number(this.config.duration)
+      );
+
+
+    this.eccentricity =
+
+      Math.min(
+
+        0.45,
+
+        Math.max(
+          0,
+          Number(this.config.eccentricity)
+        )
+
+      );
+
+
+    this.orientation =
+
+      Number(this.config.orientation) *
+
+      Math.PI /
+
+      180;
+
+
+    this.seed =
+
+      Number(this.config.seed);
+
+
+    this.progress =
+
+      Number(this.config.progress);
+
+
+    this.moonRadius =
+
+      Math.max(
+        0.5,
+        Number(this.config.moonRadius)
+      );
+
+
+    this.clearance =
+
+      Math.max(
+        0,
+        Number(this.config.clearance)
+      );
+
+
+    this.direction =
+      this.config.direction;
+
+
+    this.directionMultiplier =
+
+      this.direction === "left"
+        ? -1
+        : 1;
+
+
+    this.dustMotionEnabled =
+
+      Boolean(this.config.dustMotionEnabled);
+
+
+    this.dustIntensity =
+
+      Math.min(
+
+        10,
+
+        Math.max(
+          0,
+          Number(this.config.dustIntensity)
+        )
+
+      );
+
+
+    this.dustDensity =
+
+      Math.min(
+
+        4,
+
+        Math.max(
+          0.25,
+          Number(this.config.dustDensity)
+        )
+
+      );
+
+  }
+
+
+  updateConfig(
+    newOptions = {}
+  ) {
+
+    Object.assign(
+      this.config,
+      newOptions
+    );
+
+
+    this.applyConfig();
+
+
+    this.build();
 
   }
 
@@ -1711,7 +1674,7 @@ export class OrbitLogo {
 
 
     this.centralBodyRadius =
-      31.2;
+      this.config.stardustCentralBodyRadius;
 
 
     const subtleRing =
@@ -1774,7 +1737,7 @@ export class OrbitLogo {
         count:
 
           this.getScaledParticleCount(
-            190
+            this.config.stardustSymmetricCount
           ),
 
         random,
@@ -1783,22 +1746,22 @@ export class OrbitLogo {
           this.variant,
 
         baseRadius:
-          34,
+          this.config.stardustBaseRadius,
 
         radialSpread:
-          2.15,
+          this.config.stardustRadialSpreadSymmetric,
 
         minSize:
-          0.18,
+          this.config.stardustMinSize,
 
         maxSize:
-          0.52,
+          this.config.stardustMaxSize,
 
         minOpacity:
-          0.22,
+          this.config.stardustMinOpacity,
 
         maxOpacity:
-          0.88
+          this.config.stardustMaxOpacity
 
       });
 
@@ -1818,7 +1781,7 @@ export class OrbitLogo {
         count:
 
           this.getScaledParticleCount(
-            235
+            this.config.stardustAsymmetricCount
           ),
 
         random,
@@ -1827,22 +1790,22 @@ export class OrbitLogo {
           this.variant,
 
         baseRadius:
-          34,
+          this.config.stardustBaseRadius,
 
         radialSpread:
-          2.5,
+          this.config.stardustRadialSpreadAsymmetric,
 
         minSize:
-          0.16,
+          this.config.stardustMinSize,
 
         maxSize:
-          0.56,
+          this.config.stardustMaxSize,
 
         minOpacity:
-          0.16,
+          this.config.stardustMinOpacity,
 
         maxOpacity:
-          0.9
+          this.config.stardustMaxOpacity
 
       });
 
@@ -1869,7 +1832,7 @@ export class OrbitLogo {
   buildGlow() {
 
     this.centralBodyRadius =
-      31.5;
+      this.config.glowCentralBodyRadius;
 
 
     const distortedGlowFilterId =
@@ -2518,7 +2481,7 @@ export class OrbitLogo {
       count:
 
         this.getScaledParticleCount(
-          125
+          this.config.glowNearSpeckCount
         ),
 
       baseRadius:
@@ -2564,7 +2527,7 @@ export class OrbitLogo {
       count:
 
         this.getScaledParticleCount(
-          70
+          this.config.glowFarSpeckCount
         ),
 
       baseRadius:
@@ -2615,7 +2578,7 @@ export class OrbitLogo {
         count:
 
           this.getScaledParticleCount(
-            90
+            this.config.glowSymmetricCount
           ),
 
         random,
@@ -2659,7 +2622,7 @@ export class OrbitLogo {
         count:
 
           this.getScaledParticleCount(
-            120
+            this.config.glowAsymmetricCount
           ),
 
         random,
@@ -2943,7 +2906,7 @@ export class OrbitLogo {
         Math.sin(
 
           this.elapsedSeconds *
-            particle.speed +
+          particle.speed +
 
           particle.phase
 
@@ -2963,10 +2926,10 @@ export class OrbitLogo {
 
           this.elapsedSeconds *
 
-            (
-              particle.speed *
-              0.78
-            )
+          (
+            particle.speed *
+            0.78
+          )
 
           +
 
@@ -2989,10 +2952,10 @@ export class OrbitLogo {
 
           this.elapsedSeconds *
 
-            (
-              particle.speed *
-              0.31
-            )
+          (
+            particle.speed *
+            0.31
+          )
 
           +
 
@@ -3015,23 +2978,23 @@ export class OrbitLogo {
 
         normalX *
 
-          (
-            particle.baseRadius +
+        (
+          particle.baseRadius +
 
-            radialOffset +
+          radialOffset +
 
-            gentleBreathing
-          )
+          gentleBreathing
+        )
 
         +
 
         tangentX *
 
-          (
-            tangentialOffset +
+        (
+          tangentialOffset +
 
-            secondaryDrift
-          );
+          secondaryDrift
+        );
 
 
 
@@ -3041,23 +3004,23 @@ export class OrbitLogo {
 
         normalY *
 
-          (
-            particle.baseRadius +
+        (
+          particle.baseRadius +
 
-            radialOffset +
+          radialOffset +
 
-            gentleBreathing
-          )
+          gentleBreathing
+        )
 
         +
 
         tangentY *
 
-          (
-            tangentialOffset +
+        (
+          tangentialOffset +
 
-            secondaryDrift
-          );
+          secondaryDrift
+        );
 
 
 
@@ -3081,7 +3044,7 @@ export class OrbitLogo {
         Math.sin(
 
           this.elapsedSeconds *
-            particle.twinkleSpeed
+          particle.twinkleSpeed
 
           +
 
@@ -3100,13 +3063,13 @@ export class OrbitLogo {
         Math.sin(
 
           this.elapsedSeconds *
-            particle.twinkleSpeed *
-            0.37
+          particle.twinkleSpeed *
+          0.37
 
           +
 
           particle.twinklePhase *
-            1.61
+          1.61
 
         ) *
 
@@ -3180,8 +3143,8 @@ export class OrbitLogo {
           Math.sin(
 
             this.elapsedSeconds *
-              particle.twinkleSpeed *
-              0.72
+            particle.twinkleSpeed *
+            0.72
 
             +
 
@@ -3363,14 +3326,14 @@ export class OrbitLogo {
 
             this.directionMultiplier *
 
-              (
-                delta /
+            (
+              delta /
 
-                (
-                  this.duration *
-                  1000
-                )
+              (
+                this.duration *
+                1000
               )
+            )
 
             +
 
@@ -3680,7 +3643,7 @@ export class OrbitLogo {
     this.directionMultiplier =
 
       direction ===
-      "left"
+        "left"
 
         ? -1
 
