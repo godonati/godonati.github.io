@@ -6,13 +6,29 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 let activeProjectIframe = null;
 let lastScrollY = window.scrollY;
 let isScrollTicking = false;
+let isProgrammaticScroll = false;
+let programmaticScrollTimer = null;
+
+function endProgrammaticScroll() {
+  isProgrammaticScroll = false;
+  if (programmaticScrollTimer) {
+    clearTimeout(programmaticScrollTimer);
+    programmaticScrollTimer = null;
+  }
+}
+
+['wheel', 'touchmove', 'keydown', 'mousedown'].forEach((eventType) => {
+  window.addEventListener(eventType, endProgrammaticScroll, { passive: true });
+});
 
 function updateHeaderVisibility() {
   const currentScrollY = window.scrollY;
   const delta = currentScrollY - lastScrollY;
   const isNavOpen = navMenu && navMenu.classList.contains('is-open');
 
-  if (currentScrollY <= 40 || isNavOpen) {
+  if (isProgrammaticScroll) {
+    siteHeader?.classList.remove('is-hidden');
+  } else if (currentScrollY <= 40 || isNavOpen) {
     siteHeader?.classList.remove('is-hidden');
   } else if (delta > 18 && currentScrollY > 180) {
     siteHeader?.classList.add('is-hidden');
@@ -47,6 +63,27 @@ function scrollToSection(target, hash) {
   const targetTop = target === document.body || target.id === 'top'
     ? 0
     : Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerOffset);
+
+  isProgrammaticScroll = true;
+  siteHeader?.classList.remove('is-hidden');
+
+  if (programmaticScrollTimer) {
+    clearTimeout(programmaticScrollTimer);
+  }
+
+  const onScrollEnd = () => {
+    endProgrammaticScroll();
+    window.removeEventListener('scrollend', onScrollEnd);
+  };
+
+  if ('onscrollend' in window) {
+    window.addEventListener('scrollend', onScrollEnd, { once: true });
+  }
+
+  programmaticScrollTimer = setTimeout(() => {
+    endProgrammaticScroll();
+    window.removeEventListener('scrollend', onScrollEnd);
+  }, 1000);
 
   window.scrollTo({
     top: targetTop,
