@@ -102,9 +102,9 @@ img {
     transform: translateY(0)
 }
 
-/* Project pages render inside the slide-over panel; the root navigation stays
-   above that panel so there is only one persistent navbar. */
-.is-project-overlay .site-header {
+/* Direct project pages keep their own navigation. In the slide-over panel, the
+   homepage navigation remains the single visible bar. */
+.is-project-embedded .site-header {
     display: none;
 }
 

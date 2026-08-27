@@ -12,6 +12,8 @@ let navTransitionTimer = null;
 let projectEntryFrame = null;
 let projectCloseInProgress = false;
 let isContactCloseTransition = false;
+let suppressProjectHeaderHide = false;
+const projectRefreshStorageKey = 'portfolio-project-refresh';
 const rootNavCta = window.parent === window ? document.querySelector('.nav-cta') : null;
 const defaultNavMarkup = navMenu?.innerHTML || '';
 const projectNavTargets = {
@@ -140,6 +142,7 @@ window.addEventListener('message', (event) => {
 let lastScrollY = window.scrollY;
 let isScrollTicking = false;
 let isProgrammaticScroll = false;
+let hasUserScrollIntent = false;
 let programmaticScrollTimer = null;
 let programmaticScrollEndHandler = null;
 
@@ -156,7 +159,10 @@ function endProgrammaticScroll() {
 }
 
 ['wheel', 'touchmove', 'keydown', 'mousedown'].forEach((eventType) => {
-  window.addEventListener(eventType, endProgrammaticScroll, { passive: true });
+  window.addEventListener(eventType, () => {
+    hasUserScrollIntent = true;
+    endProgrammaticScroll();
+  }, { passive: true });
 });
 
 function updateHeaderVisibility() {
@@ -171,7 +177,9 @@ function updateHeaderVisibility() {
     return;
   }
 
-  if (isProgrammaticScroll) {
+  if (activeProjectIframe && suppressProjectHeaderHide) {
+    siteHeader?.classList.remove('is-hidden');
+  } else if (isProgrammaticScroll) {
     siteHeader?.classList.remove('is-hidden');
   } else if (currentScrollY <= 40 || isNavOpen) {
     siteHeader?.classList.remove('is-hidden');
@@ -183,6 +191,28 @@ function updateHeaderVisibility() {
 
   lastScrollY = currentScrollY;
   isScrollTicking = false;
+
+  if (window.parent !== window) {
+    window.parent.postMessage(
+      {
+        type: 'project-header-visibility',
+        hidden: siteHeader?.classList.contains('is-hidden') || false,
+        scrollY: window.scrollY,
+        userInitiated: hasUserScrollIntent,
+      },
+      window.location.origin,
+    );
+  }
+}
+
+function revealHeaderForPageChange() {
+  siteHeader?.classList.remove('is-hidden');
+  if (window.parent !== window) {
+    window.parent.postMessage(
+      { type: 'project-header-visibility', hidden: false },
+      window.location.origin,
+    );
+  }
 }
 
 window.addEventListener('scroll', () => {
@@ -303,6 +333,8 @@ if (brandLink) {
 function closeProjectIframe(destinationHash = '') {
   if (projectCloseInProgress || !activeProjectIframe) return;
   projectCloseInProgress = true;
+  suppressProjectHeaderHide = false;
+  revealHeaderForPageChange();
 
   if (closeProjectTimer) {
     clearTimeout(closeProjectTimer);
@@ -317,7 +349,7 @@ function closeProjectIframe(destinationHash = '') {
   }
   iframe.dataset.closeRequested = 'true';
   const closeDestinationY = returnToTopOnClose ? 0 : savedScrollY;
-  const restoreHeaderHidden = returnToTopOnClose ? false : savedHeaderWasHidden;
+  const restoreHeaderHidden = false;
   if (returnToTopOnClose) window.scrollTo({ top: 0, behavior: 'auto' });
   returnToTopOnClose = false;
   activeProjectIframe = null;
@@ -393,9 +425,28 @@ window.addEventListener('message', (event) => {
 });
 
 window.addEventListener('message', (event) => {
+  if (event.origin !== window.location.origin || event.data?.type !== 'project-header-visibility') return;
+  if (!activeProjectIframe || event.source !== activeProjectIframe.contentWindow) return;
+  if (event.data.userInitiated) suppressProjectHeaderHide = false;
+  if (suppressProjectHeaderHide && event.data.hidden) {
+    siteHeader?.classList.remove('is-hidden');
+  } else {
+    siteHeader?.classList.toggle('is-hidden', Boolean(event.data.hidden));
+  }
+  if (Number.isFinite(event.data.scrollY) && window.history.state?.projectPage) {
+    window.history.replaceState(
+      { ...window.history.state, projectScrollY: event.data.scrollY },
+      '',
+      window.location.href,
+    );
+  }
+});
+
+window.addEventListener('message', (event) => {
   if (event.origin !== window.location.origin || event.data?.type !== 'project-navigate') return;
   if (!activeProjectIframe || typeof event.data.href !== 'string' || activeProjectIframe.dataset.isSwapping === 'true') return;
 
+  revealHeaderForPageChange();
   const iframe = activeProjectIframe;
   const previousHref = iframe.src;
   iframe.dataset.isSwapping = 'true';
@@ -406,7 +457,7 @@ window.addEventListener('message', (event) => {
     if (activeProjectIframe !== iframe) return;
     iframe.addEventListener('load', () => {
       try {
-        (iframe.contentDocument || iframe.contentWindow.document).documentElement.classList.add('is-project-overlay');
+        (iframe.contentDocument || iframe.contentWindow.document).documentElement.classList.add('is-project-embedded');
       } catch (e) {
         // Same-origin styling fallback is optional.
       }
@@ -423,12 +474,21 @@ window.addEventListener('message', (event) => {
     }, { once: true });
     iframe.src = event.data.href;
     setProjectContextLinks(event.data.href);
-    window.history.pushState({ projectPage: event.data.href }, '', event.data.href);
+    window.history.pushState(
+      { projectPage: event.data.href, mainScrollY: savedScrollY, projectScrollY: 0 },
+      '',
+      event.data.href,
+    );
   }, prefersReducedMotion ? 0 : 750);
 });
 
-function slideUpProjectIframe(href) {
+function slideUpProjectIframe(href, options = {}) {
+  const restoreMainScrollY = Number.isFinite(options.mainScrollY) ? options.mainScrollY : null;
+  const restoreProjectScrollY = Number.isFinite(options.projectScrollY) ? options.projectScrollY : 0;
+  const replaceHistory = options.replaceHistory === true;
+  suppressProjectHeaderHide = replaceHistory;
   closeMenu();
+  revealHeaderForPageChange();
 
   if (closeProjectTimer) {
     clearTimeout(closeProjectTimer);
@@ -438,7 +498,7 @@ function slideUpProjectIframe(href) {
   endProgrammaticScroll();
   returnToTopOnClose = false;
   if (!activeProjectIframe) {
-    savedScrollY = window.scrollY;
+    savedScrollY = restoreMainScrollY ?? window.scrollY;
     savedHeaderWasHidden = siteHeader?.classList.contains('is-hidden') || false;
   }
 
@@ -458,7 +518,13 @@ function slideUpProjectIframe(href) {
     if (activeProjectIframe !== iframe || iframe.dataset.closeRequested === 'true') return;
     try {
       const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-      iframeDoc.documentElement.classList.add('is-project-overlay');
+      iframeDoc.documentElement.classList.add('is-project-embedded');
+      if (restoreProjectScrollY > 0) {
+        iframe.contentWindow.scrollTo({ top: restoreProjectScrollY, behavior: 'auto' });
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(revealHeaderForPageChange);
+        });
+      }
       iframeDoc.querySelectorAll('a').forEach((link) => {
         const linkHref = link.getAttribute('href');
         if (!linkHref) return;
@@ -474,7 +540,7 @@ function slideUpProjectIframe(href) {
           return;
         }
 
-        if (linkHref.includes('index.html') || linkHref.startsWith('#')) {
+        if (linkHref.includes('index.html')) {
           link.addEventListener('click', (event) => {
             event.preventDefault();
             event.stopPropagation();
@@ -500,7 +566,16 @@ function slideUpProjectIframe(href) {
     siteHeader?.classList.add('is-project-open');
   });
 
-  window.history.pushState({ projectPage: href }, '', href);
+  const projectHistoryState = {
+    projectPage: href,
+    mainScrollY: savedScrollY,
+    projectScrollY: restoreProjectScrollY,
+  };
+  if (replaceHistory) {
+    window.history.replaceState(projectHistoryState, '', href);
+  } else {
+    window.history.pushState(projectHistoryState, '', href);
+  }
 }
 
 document.addEventListener('click', (event) => {
@@ -512,6 +587,7 @@ document.addEventListener('click', (event) => {
   if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('http') || href.startsWith('tel:')) return;
 
   if (href.endsWith('.html') || href.includes('.html#')) {
+    revealHeaderForPageChange();
     if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
     if (window.parent !== window) {
@@ -527,10 +603,40 @@ document.addEventListener('click', (event) => {
 });
 
 window.addEventListener('popstate', () => {
+  revealHeaderForPageChange();
   if (activeProjectIframe) {
     closeProjectIframe('');
   }
 });
+
+if (window.parent === window && document.body.id === 'top') {
+  const shouldRestoreProject = new URLSearchParams(window.location.search).get('restore-project') === '1';
+  const storedProjectState = shouldRestoreProject
+    ? window.sessionStorage.getItem(projectRefreshStorageKey)
+    : null;
+
+  if (storedProjectState) {
+    window.sessionStorage.removeItem(projectRefreshStorageKey);
+    try {
+      const restoredState = JSON.parse(storedProjectState);
+      if (restoredState?.projectPage) {
+        const mainScrollY = Number(restoredState.mainScrollY) || 0;
+        const projectScrollY = Number(restoredState.projectScrollY) || 0;
+        window.history.replaceState(null, '', 'index.html');
+        window.scrollTo({ top: mainScrollY, behavior: 'auto' });
+        slideUpProjectIframe(restoredState.projectPage, {
+          mainScrollY,
+          projectScrollY,
+          replaceHistory: true,
+        });
+      }
+    } catch (error) {
+      window.history.replaceState(null, '', 'index.html');
+    }
+  } else if (shouldRestoreProject) {
+    window.history.replaceState(null, '', 'index.html');
+  }
+}
 
 const form = document.getElementById('contact-form');
 if (form) {
